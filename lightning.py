@@ -35,23 +35,25 @@ def flashCell3():
 	flashCell(4)
 def flashCell4():
 	flashCell(17)
-def flashCell5()
+def flashCell5():
 	flashCell(27)
 
 
 #main loop
-#length=random.randint(1,5)
-for i in range(0,1):
-	p1 = Process(target = flashCell, args = (2))
-	p2 = Process(target = flashCell, args = (3))
-	p3 = Process(target = flashCell, args = (4))
-	p4 = Process(target = flashCell, args = (17))
-	p5 = Process(target = flashCell, args = (27))
+length=random.randint(1,7)
+for i in range(0,length):
+	p1 = Process(target=flashCell1)
+	p2 = Process(target=flashCell2)
+	p3 = Process(target=flashCell3)
+	p4 = Process(target=flashCell4)
+	p5 = Process(target=flashCell5)
 	cell_array = [p1,p2,p3,p4,p5]
 	
 	while len(cell_array) > 0:
 		randindex = random.randint(0, len(cell_array) - 1)
-		print(randindex)
 		process = cell_array[randindex]
-		process.start()
+		if random.randint(0,1) > 0:
+			process.start()
 		cell_array.remove(process)
+		time.sleep(random.uniform(0, 0.4))
+	time.sleep(random.uniform(0.5,2))
