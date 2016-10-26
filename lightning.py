@@ -29,7 +29,6 @@ def flashCell( cellNum ):
 
 
 length=random.randint(1,5)
-print(length)
 for i in range(0,length):
 	p1 = Process(target = flashCell(2))
 	p2 = Process(target = flashCell(3))
@@ -37,4 +36,6 @@ for i in range(0,length):
 	p4 = Process(target = flashCell(17))
 	p5 = Process(target = flashCell(27))
 	cell_array = [p1,p2,p3,p4,p5]
-	
+	while len(cell_array) > 0:
+		cell_array[0].start()
+		cell_array.remove(cell_array[0])
